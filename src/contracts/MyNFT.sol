@@ -15,7 +15,13 @@ contract MyNFT is ERC721URIStorage, AccessControl {
     /**
      * @dev See {IERC165-supportsInterface}.
      */
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721URIStorage, AccessControl) returns (bool) {
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(ERC721URIStorage, AccessControl)
+        returns (bool)
+    {
         return super.supportsInterface(interfaceId);
     }
 

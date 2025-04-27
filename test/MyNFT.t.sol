@@ -44,7 +44,7 @@ contract MyNFTTest is Test {
         nft.safeTransferFrom(bob, alice, tokenId);
 
         assertEq(nft.ownerOf(tokenId), alice);
-        assertEq(nft.balanceOf(alice), 1); 
+        assertEq(nft.balanceOf(alice), 1);
     }
 
     function testSupportsInterface() public view {

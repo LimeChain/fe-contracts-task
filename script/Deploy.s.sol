@@ -20,7 +20,6 @@ contract Deploy is Script {
         console.log("MyNFT deployed at:", address(nft));
         console.log("Deployed block number:", block.number);
 
-
         // Stop broadcasting
         vm.stopBroadcast();
     }

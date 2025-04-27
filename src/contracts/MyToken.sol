@@ -8,12 +8,12 @@ contract MyToken is ERC20, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
     // Staking logic
-    mapping(address => uint256) public stakingBalance;  // User's staking balance
-    mapping(address => uint256) public stakingTimestamp;  // Last staking time
-    mapping(address => uint256) public rewards;  // Rewards for each user
+    mapping(address => uint256) public stakingBalance; // User's staking balance
+    mapping(address => uint256) public stakingTimestamp; // Last staking time
+    mapping(address => uint256) public rewards; // Rewards for each user
 
-    uint256 public constant REWARD_INTERVAL = 3600 seconds;  // Time for rewards to accumulate (example: 1 hour)
-    uint256 public constant LOCK_PERIOD = 600 seconds;  // Lock period before unstaking (10 minutes)
+    uint256 public constant REWARD_INTERVAL = 3600 seconds; // Time for rewards to accumulate (example: 1 hour)
+    uint256 public constant LOCK_PERIOD = 600 seconds; // Lock period before unstaking (10 minutes)
 
     constructor(uint256 initialSupply) ERC20("MyToken", "MTK") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
@@ -35,7 +35,7 @@ contract MyToken is ERC20, AccessControl {
 
         // Update staking balance and staking timestamp
         stakingBalance[msg.sender] += amount;
-        
+
         // Set the staking timestamp when tokens are first staked
         if (stakingTimestamp[msg.sender] == 0) {
             stakingTimestamp[msg.sender] = block.timestamp;
@@ -57,7 +57,7 @@ contract MyToken is ERC20, AccessControl {
         stakingBalance[msg.sender] -= amount;
     }
 
-     // Function to calculate rewards
+    // Function to calculate rewards
     function calculateRewards(address account) public view returns (uint256) {
         uint256 stakedDuration = block.timestamp - stakingTimestamp[account];
         uint256 reward = (stakingBalance[account] * stakedDuration) / REWARD_INTERVAL;

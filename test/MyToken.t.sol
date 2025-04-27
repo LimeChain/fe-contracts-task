@@ -60,7 +60,7 @@ contract MyTokenTest is Test {
         uint256 initialBalance = token.balanceOf(alice);
 
         assertEq(initialBalance, stakeAmount);
-        
+
         vm.prank(alice);
         token.stake(stakeAmount);
 
@@ -132,7 +132,7 @@ contract MyTokenTest is Test {
 
         uint256 initialBalance = token.balanceOf(alice);
         uint256 reward = token.calculateRewards(alice);
-        
+
         assertGt(reward, 0, "Reward should be greater than zero after sufficient time.");
 
         vm.prank(alice);
